@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Feeding Flowchart</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 25px;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #222;
+}
+
+.flowchart-container {
+    width: 100%;
+    overflow-x: auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+svg {
+    display: block;
+    width: 1500px;
+    max-width: none;
+    height: auto;
+    margin: auto;
+}
+
+.node {
+    stroke: #222;
+    stroke-width: 2;
+}
+
+.start-end {
+    fill: #d9f2c5;
+}
+
+.process {
+    fill: #d9ecfa;
+}
+
+.input {
+    fill: #fff0bd;
+}
+
+.decision {
+    fill: #f9d9c8;
+}
+
+.error {
+    fill: #f8d2d2;
+}
+
+.success {
+    fill: #d9f2c5;
+}
+
+text {
+    font-size: 17px;
+    fill: #222;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.yes {
+    fill: green;
+}
+
+.no {
+    fill: red;
+}
+
+.arrow {
+    fill: none;
+    stroke: #222;
+    stroke-width: 2.5;
+    marker-end: url(#arrowhead);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>AUTOMATED FEEDING FLOWCHART</h1>
+
+<div class="flowchart-container">
+
+<svg viewBox="0 0 1500 760"
+     xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+    <marker id="arrowhead"
+        markerWidth="10"
+        markerHeight="10"
+        refX="8"
+        refY="3"
+        orient="auto">
+        <path d="M0,0 L0,6 L9,3 Z" fill="#222"/>
+    </marker>
+</defs>
+
+<!-- START -->
+<ellipse class="node start-end"
+    cx="90" cy="220" rx="75" ry="45"/>
+
+<text x="90" y="220" font-weight="bold">START</text>
+
+<!-- OPEN MODULE -->
+<rect class="node process"
+    x="200" y="165" width="190" height="110" rx="8"/>
+
+<text x="295" y="205">
+    <tspan x="295">Open Automated</tspan>
+    <tspan x="295" dy="23">Feeding Module</tspan>
+</text>
+
+<!-- ENTER DETAILS -->
+<polygon class="node input"
+    points="445,165 665,165 645,275 425,275"/>
+
+<text x="545" y="200">
+    <tspan x="545">Enter Food Type,</tspan>
+    <tspan x="545" dy="23">Feeding Time,</tspan>
+    <tspan x="545" dy="23">and Schedule</tspan>
+</text>
+
+<!-- FIELDS COMPLETE -->
+<polygon class="node decision"
+    points="745,145 835,220 745,295 655,220"/>
+
+<text x="745" y="210">
+    <tspan x="745">Fields</tspan>
+    <tspan x="745" dy="22">Complete?</tspan>
+</text>
+
+<!-- VALIDATE -->
+<rect class="node process"
+    x="900" y="165" width="190" height="110" rx="8"/>
+
+<text x="995" y="205">
+    <tspan x="995">Validate Feeding</tspan>
+    <tspan x="995" dy="23">Time and Schedule</tspan>
+</text>
+
+<!-- SCHEDULE VALID -->
+<polygon class="node decision"
+    points="1190,145 1280,220 1190,295 1100,220"/>
+
+<text x="1190" y="210">
+    <tspan x="1190">Schedule</tspan>
+    <tspan x="1190" dy="22">Valid?</tspan>
+</text>
+
+<!-- SAVE -->
+<rect class="node process"
+    x="1320" y="165" width="165" height="110" rx="8"/>
+
+<text x="1402" y="195">
+    <tspan x="1402">Save Feeding</tspan>
+    <tspan x="1402" dy="23">Schedule in</tspan>
+    <tspan x="1402" dy="23">DATABASE</tspan>
+</text>
+
+<!-- REQUIRED MESSAGE -->
+<rect class="node error"
+    x="650" y="390" width="190" height="80" rx="8"/>
+
+<text x="745" y="430">
+    <tspan x="745">Show Required</tspan>
+    <tspan x="745" dy="22">Fields Message</tspan>
+</text>
+
+<!-- INVALID MESSAGE -->
+<rect class="node error"
+    x="1095" y="390" width="190" height="80" rx="8"/>
+
+<text x="1190" y="430">
+    <tspan x="1190">Show Invalid</tspan>
+    <tspan x="1190" dy="22">Schedule Message</tspan>
+</text>
+
+<!-- SUCCESS MESSAGE -->
+<rect class="node success"
+    x="1320" y="370" width="165" height="85" rx="8"/>
+
+<text x="1402" y="400">
+    <tspan x="1402">Schedule Saved</tspan>
+    <tspan x="1402" dy="22">Successfully</tspan>
+</text>
+
+<!-- END -->
+<ellipse class="node start-end"
+    cx="1402" cy="570" rx="75" ry="45"/>
+
+<text x="1402" y="570" font-weight="bold">END</text>
+
+<!-- MAIN ARROWS -->
+<path class="arrow" d="M165 220 H200"/>
+<path class="arrow" d="M390 220 H425"/>
+<path class="arrow" d="M645 220 H655"/>
+
+<!-- YES: FIELDS COMPLETE -->
+<path class="arrow" d="M835 220 H900"/>
+<text class="label yes" x="865" y="195">YES</text>
+
+<!-- NO: FIELDS -->
+<path class="arrow" d="M745 295 V390"/>
+<text class="label no" x="770" y="340">NO</text>
+
+<!-- REQUIRED MESSAGE RETURN -->
+<path class="arrow" d="M650 430 H545 V275"/>
+
+<!-- VALIDATE TO DECISION -->
+<path class="arrow" d="M1090 220 H1100"/>
+
+<!-- YES: VALID SCHEDULE -->
+<path class="arrow" d="M1280 220 H1320"/>
+<text class="label yes" x="1300" y="195">YES</text>
+
+<!-- NO: INVALID SCHEDULE -->
+<path class="arrow" d="M1190 295 V390"/>
+<text class="label no" x="1215" y="340">NO</text>
+
+<!-- INVALID RETURN -->
+<path class="arrow" d="M1095 430 H545 V275"/>
+
+<!-- SAVE TO SUCCESS -->
+<path class="arrow" d="M1402 275 V370"/>
+
+<!-- SUCCESS TO END -->
+<path class="arrow" d="M1402 455 V525"/>
+
+</svg>
+</div>
+
+</body>
+</html>

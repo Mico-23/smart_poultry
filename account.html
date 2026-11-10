@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOD1 - ACCOUNTS LOGIN FLOWCHART</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 5px 0 25px;
+}
+
+svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: white;
+}
+
+/* FLOWCHART SHAPES */
+.node {
+    fill: #dcebf7;
+    stroke: black;
+    stroke-width: 2.5;
+}
+
+.input {
+    fill: #fff0c9;
+    stroke: black;
+    stroke-width: 2.5;
+}
+
+.terminal {
+    fill: #e8f2df;
+    stroke: black;
+    stroke-width: 2.5;
+}
+
+.decision {
+    fill: #fce8dc;
+    stroke: black;
+    stroke-width: 2.5;
+}
+
+.error {
+    fill: #fce8dc;
+    stroke: black;
+    stroke-width: 2.5;
+}
+
+.return {
+    fill: #fff0c9;
+    stroke: black;
+    stroke-width: 2.5;
+}
+
+/* ARROWS */
+.line {
+    fill: none;
+    stroke: black;
+    stroke-width: 2.5;
+    stroke-linecap: square;
+    stroke-linejoin: round;
+    marker-end: url(#arrow);
+}
+
+/* TEXT */
+.text {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    fill: black;
+}
+
+.label {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-anchor: middle;
+}
+
+.yes {
+    fill: green;
+}
+
+.no {
+    fill: red;
+}
+
+.branch {
+    font-size: 17px;
+    font-weight: bold;
+    text-anchor: middle;
+}
+</style>
+</head>
+
+<body>
+
+<h2>MOD1 - ACCOUNTS LOGIN FLOWCHART</h2>
+
+<svg viewBox="0 0 1700 1000"
+     xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+    <marker id="arrow"
+        markerWidth="10"
+        markerHeight="10"
+        refX="8"
+        refY="5"
+        orient="auto"
+        markerUnits="userSpaceOnUse">
+        <path d="M0,0 L0,10 L9,5 Z" fill="black"/>
+    </marker>
+</defs>
+
+<!-- 1. START -->
+<rect class="terminal"
+      x="25" y="150"
+      width="120" height="65"
+      rx="32"/>
+
+<text class="text" x="85" y="182">
+    <tspan font-weight="bold">START</tspan>
+</text>
+
+<path class="line" d="M145 182 H195"/>
+
+<!-- 2. LOGIN INPUT -->
+<path class="input"
+      d="M215 145 H405 L385 220 H195 Z"/>
+
+<text class="text" x="300" y="172">
+    <tspan x="300">Enter Username</tspan>
+    <tspan x="300" dy="24">&amp; Password</tspan>
+</text>
+
+<!-- 3. REQUIRED FIELDS -->
+<path class="line" d="M405 182 H460"/>
+
+<polygon class="decision"
+    points="520,122 580,182 520,242 460,182"/>
+
+<text class="text" x="520" y="175">
+    <tspan x="520">Fields</tspan>
+    <tspan x="520" dy="23">Complete?</tspan>
+</text>
+
+<!-- NO: REQUIRED MESSAGE -->
+<path class="line" d="M520 122 V75 H650"/>
+
+<text class="label no" x="555" y="105">NO</text>
+
+<rect class="error"
+      x="650" y="40"
+      width="210" height="70"/>
+
+<text class="text" x="755" y="75">
+    <tspan x="755">Show Required</tspan>
+    <tspan x="755" dy="23">Message</tspan>
+</text>
+
+<!-- REQUIRED MESSAGE RETURNS TO INPUT -->
+<path class="line"
+      d="M755 110 V130 H300 V145"/>
+
+<!-- YES: SEARCH ACCOUNT -->
+<path class="line" d="M580 182 H640"/>
+
+<text class="label yes" x="610" y="160">YES</text>
+
+<!-- 4. SEARCH ACCOUNT -->
+<rect class="node"
+      x="640" y="145"
+      width="200" height="75"/>
+
+<text class="text" x="740" y="172">
+    <tspan x="740">Search Account</tspan>
+    <tspan x="740" dy="23">in ACCOUNTS</tspan>
+</text>
+
+<path class="line" d="M840 182 H890"/>
+
+<!-- 5. ACCOUNT FOUND -->
+<polygon class="decision"
+    points="955,122 1020,182 955,242 890,182"/>
+
+<text class="text" x="955" y="175">
+    <tspan x="955">Account</tspan>
+    <tspan x="955" dy="23">Found?</tspan>
+</text>
+
+<!-- NO: ACCOUNT NOT FOUND -->
+<path class="line" d="M955 242 V300"/>
+
+<text class="label no" x="980" y="270">NO</text>
+
+<rect class="error"
+      x="860" y="300"
+      width="190" height="65"/>
+
+<text class="text" x="955" y="332">
+    <tspan x="955">Invalid Login</tspan>
+    <tspan x="955" dy="22">Message</tspan>
+</text>
+
+<!-- ACCOUNT NOT FOUND TO RETURN -->
+<path class="line"
+      d="M955 365 V385 H680"/>
+
+<!-- YES: VERIFY PASSWORD -->
+<path class="line" d="M1020 182 H1080"/>
+
+<text class="label yes" x="1050" y="160">YES</text>
+
+<!-- 6. VERIFY PASSWORD -->
+<rect class="node"
+      x="1080" y="145"
+      width="200" height="75"/>
+
+<text class="text" x="1180" y="172">
+    <tspan x="1180">Verify</tspan>
+    <tspan x="1180" dy="23">Password Hash</tspan>
+</text>
+
+<path class="line" d="M1280 182 H1330"/>
+
+<!-- 7. PASSWORD VALID -->
+<polygon class="decision"
+    points="1395,122 1460,182 1395,242 1330,182"/>
+
+<text class="text" x="1395" y="175">
+    <tspan x="1395">Password</tspan>
+    <tspan x="1395" dy="23">Valid?</tspan>
+</text>
+
+<!-- NO: INVALID PASSWORD -->
+<path class="line" d="M1395 242 V300"/>
+
+<text class="label no" x="1420" y="270">NO</text>
+
+<rect class="error"
+      x="1300" y="300"
+      width="190" height="65"/>
+
+<text class="text" x="1395" y="332">
+    <tspan x="1395">Invalid Login</tspan>
+    <tspan x="1395" dy="22">Message</tspan>
+</text>
+
+<!-- INVALID PASSWORD TO RETURN -->
+<path class="line"
+      d="M1395 365 V385 H830"/>
+
+<!-- 8. RETURN TO LOGIN FORM -->
+<rect class="return"
+      x="530" y="385"
+      width="300" height="70"
+      rx="15"/>
+
+<text class="text" x="680" y="420">
+    Return to Login Form
+</text>
+
+<!-- RETURN TO INPUT -->
+<path class="line"
+      d="M530 420 H300 V220"/>
+
+<!-- 9. PASSWORD YES TO ACCOUNT STATUS -->
+<path class="line"
+      d="M1460 182 H1580 V565 H1510"/>
+
+<text class="label yes" x="1500" y="160">YES</text>
+
+<!-- 10. CHECK ACCOUNT STATUS -->
+<rect class="node"
+      x="1310" y="525"
+      width="200" height="80"/>
+
+<text class="text" x="1410" y="555">
+    <tspan x="1410">Check Account</tspan>
+    <tspan x="1410" dy="24">Status</tspan>
+</text>
+
+<path class="line" d="M1310 565 H1230"/>
+
+<!-- 11. STATUS ACTIVE DECISION -->
+<polygon class="decision"
+    points="1165,505 1230,565 1165,625 1100,565"/>
+
+<text class="text" x="1165" y="558">
+    <tspan x="1165">Status</tspan>
+    <tspan x="1165" dy="23">ACTIVE?</tspan>
+</text>
+
+<!-- STATUS NO -->
+<path class="line" d="M1165 625 V685"/>
+
+<text class="label no" x="1190" y="655">NO</text>
+
+<rect class="error"
+      x="1070" y="685"
+      width="190" height="65"/>
+
+<text class="text" x="1165" y="717">
+    Access Denied
+</text>
+
+<!-- STATUS YES -->
+<path class="line" d="M1100 565 H1015"/>
+
+<text class="label yes" x="1055" y="543">YES</text>
+
+<!-- 12. CHECK APPROVAL STATUS -->
+<rect class="node"
+      x="805" y="525"
+      width="210" height="80"/>
+
+<text class="text" x="910" y="555">
+    <tspan x="910">Check Approval</tspan>
+    <tspan x="910" dy="24">Status</tspan>
+</text>
+
+<path class="line" d="M805 565 H735"/>
+
+<!-- 13. APPROVED DECISION -->
+<polygon class="decision"
+    points="670,505 735,565 670,625 605,565"/>
+
+<text class="text" x="670" y="565">
+    APPROVED?
+</text>
+
+<!-- APPROVAL NO -->
+<path class="line" d="M670 625 V685"/>
+
+<text class="label no" x="695" y="655">NO</text>
+
+<rect class="error"
+      x="575" y="685"
+      width="190" height="65"/>
+
+<text class="text" x="670" y="717">
+    Access Denied
+</text>
+
+<!-- APPROVAL YES -->
+<path class="line" d="M605 565 H520"/>
+
+<text class="label yes" x="560" y="543">YES</text>
+
+<!-- 14. CHECK USER ROLE -->
+<rect class="node"
+      x="310" y="525"
+      width="210" height="80"/>
+
+<text class="text" x="415" y="555">
+    <tspan x="415">Check User</tspan>
+    <tspan x="415" dy="24">Role</tspan>
+</text>
+
+<!-- 15. ADMIN BRANCH -->
+<path class="line"
+      d="M365 605 V675 H190 V755"/>
+
+<text class="branch" x="260" y="655">
+    ADMIN
+</text>
+
+<rect class="node"
+      x="75" y="755"
+      width="230" height="70"/>
+
+<text class="text" x="190" y="790">
+    Admin Dashboard
+</text>
+
+<!-- 16. EMPLOYEE BRANCH -->
+<path class="line"
+      d="M465 605 V675 H480 V755"/>
+
+<text class="branch" x="510" y="655">
+    EMPLOYEE
+</text>
+
+<rect class="node"
+      x="365" y="755"
+      width="230" height="70"/>
+
+<text class="text" x="480" y="790">
+    Employee Dashboard
+</text>
+
+<!-- 17. END -->
+<!-- ADMIN DASHBOARD TO END -->
+<path class="line"
+      d="M190 825 V850 H365 V870"/>
+
+<!-- EMPLOYEE DASHBOARD TO END -->
+<path class="line"
+      d="M480 825 V850 H465 V870"/>
+
+<rect class="terminal"
+      x="330" y="870"
+      width="170" height="65"
+      rx="32"/>
+
+<text class="text" x="415" y="902">
+    <tspan font-weight="bold">END</tspan>
+</text>
+
+</svg>
+
+</body>
+</html>

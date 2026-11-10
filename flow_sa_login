@@ -1,0 +1,57 @@
+Paano gumagana ang Login Flowchart natin?
+Ang flowchart ay nagpapakita kung paano sinusuri ng system ang login ng Admin at Employee bago sila makapasok sa dashboard.
+1. Start at Enter Username & Password
+   
+   Bubuksan ng user ang login page at ilalagay ang kanyang username at password.
+2. Fields Complete?
+   
+   Titingnan kung may laman ang username at password.
+   - NO – magpapakita ng required message.
+   - YES – magpapatuloy sa paghahanap ng account.
+3. Search Account in ACCOUNTS
+   
+   Hahanapin ng system ang username sa PostgreSQL accounts table.
+4. Account Found?
+   - NO – magpapakita ng Invalid Login Message.
+   - YES – susuriin ang password.
+5. Verify Password Hash / Password Valid?
+   
+   Ihahambing ng Laravel ang inilagay na password sa naka-hash na password sa database.
+   - NO – Invalid Login Message.
+   - YES – susunod sa account status checking.
+6. Check Account Status
+   
+   Susuriin kung ACTIVE ang account.
+   - NO – Access Denied.
+   - YES – susuriin ang approval status.
+7. Check Approval Status
+   
+   Dapat APPROVED ang account bago makapasok.
+   - NO – Access Denied.
+   - YES – susuriin ang user role.
+8. Check User Role
+   - ADMIN – papasok sa Admin Dashboard.
+   - EMPLOYEE – papasok sa Employee Dashboard.
+9. End
+
+
+
+
+
+automated_feeding 
+1. Buong explanation ng flowchart
+Ang purpose ng flowchart ay ipakita kung paano gumagawa at nagse-save ang Admin ng feeding schedule para sa poultry farm.
+No.	Step / Process	Explanation
+1	START	Magsisimula ang proseso.
+2	Open Automated Feeding Module	Bubuksan ng Admin ang Automated Feeding module.
+3	Enter Feeding Details	Ilalagay ang food type, feeding time, at schedule.
+4	Fields Complete?	Susuriin kung kumpleto ang lahat ng fields.
+5	Validate Feeding Schedule	Susuriin kung valid ang feeding time at schedule.
+6	Schedule Valid?	Aalamin kung tama ang inilagay na schedule.
+7	Save Feeding Schedule	Ise-save ang feeding information sa database.
+8	Display Success Message	Magpapakita ng successful confirmation.
+9	END	Matatapos ang proseso.
+
+Paliwanag sa arrows:
+- YES: Magpapatuloy sa susunod na proseso.
+- NO: Magpapakita ng error message at babalik sa paglalagay ng feeding details.
